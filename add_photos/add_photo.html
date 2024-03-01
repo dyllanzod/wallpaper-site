@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Photo - My Instagram</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Add Photo</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/explore/explore.html">Explore</a></li>
+            <li><a href="/add_photos/add_photo.html">Add Photo</a></li>
+            <li><a href="/profile/profile.html">Profile</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Upload Photo</h2>
+        <form id="photo-form">
+            <label for="photo-upload">Choose a photo:</label>
+            <input type="file" id="photo-upload" name="photo" accept="image/*" required>
+            <label for="caption">Caption:</label>
+            <input type="text" id="caption" name="caption" required>
+            <button type="submit">Upload</button>
+        </form>
+
+        <div id="display-photo" style="display: none;">
+            <h2>Uploaded Photo</h2>
+            <img id="uploaded-photo" alt="Uploaded Photo">
+            <p id="uploaded-caption"></p>
+        </div>
+    </main>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.getElementById("photo-form");
+            const displaySection = document.getElementById("display-photo");
+            const uploadedPhoto = document.getElementById("uploaded-photo");
+            const uploadedCaption = document.getElementById("uploaded-caption");
+
+            form.addEventListener("submit", function(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                // Get input values
+                const photoFile = document.getElementById("photo-upload").files[0];
+                const caption = document.getElementById("caption").value;
+
+                // Display uploaded photo and caption
+                const reader = new FileReader();
+                reader.onload = function() {
+                    uploadedPhoto.src = reader.result;
+                    uploadedCaption.textContent = caption;
+                    displaySection.style.display = "block"; // Show the display section
+                }
+                reader.readAsDataURL(photoFile);
+            });
+        });
+    </script>
+</body>
+</html>

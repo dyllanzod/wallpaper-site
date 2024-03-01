@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore</title>
+    <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+    <header>
+        <h1>Explore</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/explore/explore.html">Explore</a></li>
+            <li><a href="/add_photos/add_photo.html">Add Photo</a></li>
+            <li><a href="/profile/profile.html">Profile</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="search">
+            <input type="text" id="searchInput" placeholder="Search...">
+            <select id="categorySelect">
+                <option value="">All</option>
+                <option value="category1">Category 1</option>
+                <option value="category2">Category 2</option>
+                <!-- Add more options for categories -->
+            </select>
+            <button onclick="filterContent()">Apply Filters</button>
+        </div>
+        <div class="content">
+            <!-- Content will be dynamically populated here -->
+        </div>
+    </main>
+    <script src="explore.js"></script>
+</body>
+</html>
